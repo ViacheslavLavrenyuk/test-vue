@@ -6,17 +6,73 @@
         <v-data-table :headers="headers" :items="users">
           <template v-slot:item="row">
             <tr>
-              <td>{{row.item.name}}</td>
-              <td>{{row.item.surname}}</td>
-              <td>{{row.item.phone}}</td>
-              <td>{{row.item.email}}</td>
+              <td v-show="isEditMode">
+                <input
+                  type="text"
+                  class="input input-active"
+                  v-model="row.item.name"
+                >
+              </td>
+              <td v-show="!isEditMode">
+                <input
+                  type="text"
+                  class="input"
+                  v-model="row.item.name"
+                  disabled
+                >
+              </td>
+              <td v-show="isEditMode">
+                <input
+                  type="text"
+                  class="input input-active"
+                  v-model="row.item.surname"
+                >
+              </td>
+              <td v-show="!isEditMode">
+                <input
+                  type="text"
+                  class="input"
+                  v-model="row.item.surname"
+                  disabled
+                >
+              </td>
+              <td v-show="isEditMode">
+                <input
+                  type="text"
+                  class="input input-active"
+                  v-model="row.item.phone"
+                >
+              </td>
+              <td v-show="!isEditMode">
+                <input
+                  type="text"
+                  class="input"
+                  v-model="row.item.phone"
+                  disabled
+                >
+              </td>
+              <td v-show="isEditMode">
+                <input
+                  type="text"
+                  class="input input-active"
+                  v-model="row.item.email"
+                >
+              </td>
+              <td v-show="!isEditMode">
+                <input
+                  type="text"
+                  class="input"
+                  v-model="row.item.email"
+                  disabled
+                >
+              </td>
               <td>
                 <v-btn
                   class="mx-2"
                   dark
                   small
                   color="orange"
-                  @click="onButtonClick(row.item)"
+                  @click="() => onEdit(row.item)"
                 >
                   <v-icon dark>mdi-account-edit</v-icon>
                 </v-btn>
@@ -27,7 +83,7 @@
                   dark
                   small
                   color="red"
-                  @click="onButtonClick(row.item)"
+                  @click="() => onDelete(row.item)"
                 >
                   <v-icon dark>mdi-delete</v-icon>
                 </v-btn>
@@ -42,6 +98,7 @@
 
 <script>
 export default {
+  props: ['id'],
   data () {
     return {
       headers: [
@@ -75,34 +132,39 @@ export default {
           sortable: false
         }
       ],
-      users: [
-        {
-          name: 'Frozen',
-          surname: 'Yogurt',
-          phone: '222-22-22',
-          email: 'test@test.ua',
-          edit: 4.0,
-          delete: 'delete'
-        },
-        {
-          name: 'Frozen11',
-          surname: 'Yogurt11',
-          phone: '222-22-11',
-          email: 'test@test.ua',
-          edit: 4.0,
-          delete: '1%'
-        }
-      ]
+      isEditMode: false
     }
   },
-
-  methods: {
-    onButtonClick (item) {
-      console.log('click on ' + item.name)
+  computed: {
+    users () {
+      return this.$store.getters.users
     }
+  },
+  methods: {
+    onEdit () {
+      console.log(this.isEditMode)
+      this.isEditMode = !this.isEditMode
+    },
+    onDelete (item) {
+      const id = item.id
+      this.$store.commit('userDelete', id)
+    }
+  },
+  updated () {
+    localStorage.setItem('users', this.$store.state.users)
   }
 }
 </script>
+
+<style scoped>
+  .input-active {
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+  .input {
+    padding: 3px;
+  }
+</style>
 
 <style>
   .header-app {

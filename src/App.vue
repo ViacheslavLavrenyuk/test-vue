@@ -8,11 +8,18 @@
 import Navbar from './components/Navbar.vue'
 
 export default {
-  components: {
-    Navbar
+  mounted () {
+    if (localStorage.getItem('users')) {
+      try {
+        this.$store.state.users = JSON.parse(localStorage.getItem('users'))
+      } catch (e) {
+        localStorage.removeItem('users')
+      }
+    }
   },
 
-  data: () => ({
-  })
+  components: {
+    Navbar
+  }
 }
 </script>

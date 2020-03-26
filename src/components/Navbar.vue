@@ -7,7 +7,7 @@
         to="/"
       >
         <v-icon left>
-            mdi-account-multiple-outline
+          mdi-account-multiple-outline
         </v-icon>
         User list
       </v-btn>
@@ -17,7 +17,7 @@
         to="/user"
       >
         <v-icon left>
-            mdi-account-multiple-plus-outline
+          mdi-account-multiple-plus-outline
         </v-icon>
         Add user
       </v-btn>
