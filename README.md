@@ -1,3 +1,6 @@
+### Demo
+[Test task demo](https://viacheslavlavrenyuk.github.io/test-vue/)
+
 ## Project setup
 ```
 npm install
@@ -20,6 +23,3 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
-### Demo
-https://viacheslavlavrenyuk.github.io/test-vue/
