@@ -6,64 +6,40 @@
         <v-data-table :headers="headers" :items="users">
           <template v-slot:item="row">
             <tr>
-              <td v-show="isEditMode">
+              <td>
                 <input
                   type="text"
-                  class="input input-active"
+                  class="input"
+                  v-bind:class="{ 'input-active': isEditMode }"
                   v-model="row.item.name"
+                  disabled = !isEditMode
                 >
               </td>
-              <td v-show="!isEditMode">
+              <td>
                 <input
                   type="text"
                   class="input"
-                  v-model="row.item.name"
-                  disabled
-                >
-              </td>
-              <td v-show="isEditMode">
-                <input
-                  type="text"
-                  class="input input-active"
+                  v-bind:class="{ 'input-active': isEditMode }"
                   v-model="row.item.surname"
+                  disabled = !isEditMode
                 >
               </td>
-              <td v-show="!isEditMode">
+              <td>
                 <input
                   type="text"
                   class="input"
-                  v-model="row.item.surname"
-                  disabled
-                >
-              </td>
-              <td v-show="isEditMode">
-                <input
-                  type="text"
-                  class="input input-active"
+                  v-bind:class="{ 'input-active': isEditMode }"
                   v-model="row.item.phone"
+                  disabled = !isEditMode
                 >
               </td>
-              <td v-show="!isEditMode">
+              <td>
                 <input
                   type="text"
                   class="input"
-                  v-model="row.item.phone"
-                  disabled
-                >
-              </td>
-              <td v-show="isEditMode">
-                <input
-                  type="text"
-                  class="input input-active"
+                  v-bind:class="{ 'input-active': isEditMode }"
                   v-model="row.item.email"
-                >
-              </td>
-              <td v-show="!isEditMode">
-                <input
-                  type="text"
-                  class="input"
-                  v-model="row.item.email"
-                  disabled
+                  disabled = !isEditMode
                 >
               </td>
               <td>
