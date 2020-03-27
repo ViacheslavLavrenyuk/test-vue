@@ -1,5 +1,5 @@
 ### Demo
-[Test task demo](https://viacheslavlavrenyuk.github.io/test-vue/)
+[Test task demo](https://still-brook-81314.herokuapp.com/)
 
 ## Project setup
 ```
